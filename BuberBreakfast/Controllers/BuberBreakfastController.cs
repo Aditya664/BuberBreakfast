@@ -11,22 +11,22 @@ namespace BuberBreakfast.Controllers
     [Route("api/[controller]")]
     public class BuberBreakfastController : ControllerBase
     {
-        [HttpPost("/api/breakfast")]
+        [HttpPost("/api/breakfasts")]
         public IActionResult CreateBreakfast(CreateBreakfastRequest request){
             return Ok(request);
         }
 
-        [HttpGet("/api/breakfast/{id:guid}")]    
+        [HttpGet("/api/breakfasts/{id:guid}")]    
         public IActionResult GetBreakfast(Guid id){
             return Ok(id);  
         }
 
-        [HttpPut("/api/breakfast/{id:guid}")] 
+        [HttpPut("/api/breakfasts/{id:guid}")] 
         public IActionResult UpsertBreakfast(Guid id, UpsertBreakfastRequest request){
             return Ok(request);
         }
 
-        [HttpDelete("/api/breakfast/{id:guid}")]    
+        [HttpDelete("/api/breakfasts/{id:guid}")]    
         public IActionResult DeleteBreakfast(Guid id){
             return Ok(id);  
         }
