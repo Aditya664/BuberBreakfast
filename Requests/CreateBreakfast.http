@@ -1,4 +1,4 @@
-POST https://localhost:5117/api/breakfasts
+POST https://localhost:7113/buberbreakfast
 Content-Type: application/json
 
 {
@@ -16,3 +16,6 @@ Content-Type: application/json
         "Cookie"
     ]
 }
+
+###
+# GET https://localhost:7113/BuberBreakfast/aec2463c-c92f-40b7-8d6a-253ac30ce610

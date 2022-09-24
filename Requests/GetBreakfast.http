@@ -1,2 +1,1 @@
-@id=00000000-0000-0000-0000-000000000000;
-GET  https://localhost:5117/api/breakfastsbreakfasts/{{id}}
+GET https://localhost:7113/BuberBreakfast/1ea9a8dd-5932-453f-8c4e-e4b8f88f17df
