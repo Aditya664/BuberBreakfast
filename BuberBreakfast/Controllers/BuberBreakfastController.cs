@@ -20,31 +20,9 @@ namespace BuberBreakfast.Controllers
         [HttpPost]
         public IActionResult CreateBreakfast(CreateBreakfastRequest request)
         {
-            Breakfasts breakfast = new Breakfasts(
-                Guid.NewGuid(),
-                request.Name,
-                request.Description,
-                request.StartDateTime,
-                request.EndDateTime,
-                DateTime.UtcNow,
-                request.Savory,
-                request.Sweet);
-                try{
-                _service.CreateBreakfast(breakfast);
-                }catch(Exception e){
-                    Console.WriteLine(e.Message);
-                }
-            BreakfastResponse breakfastResponse = new BreakfastResponse(
-                breakfast.Id,
-                breakfast.Name,
-                breakfast.Description,
-                breakfast.StartDateTime,
-                breakfast.EndDateTime,
-                breakfast.LastModifiedDateTime,
-                breakfast.Savory,
-                breakfast.Sweet);
-
-
+            Breakfasts breakfast = _service.CreateBreakfastWithRequest(request);
+            _service.CreateBreakfast(breakfast);
+            var breakfastResponse = _service.CreateBreakfastResponse(breakfast);
             return CreatedAtAction(nameof(GetBreakfast),new {id = breakfast.Id}, breakfastResponse);
         }
 
@@ -52,18 +30,8 @@ namespace BuberBreakfast.Controllers
         public IActionResult GetBreakfast(Guid id)
         {
             Breakfasts breakfast = _service.GetBreakfast(id);
-
-            BreakfastResponse response = new BreakfastResponse(
-                breakfast.Id,
-                breakfast.Name,
-                breakfast.Description,
-                breakfast.StartDateTime,
-                breakfast.EndDateTime,
-                breakfast.LastModifiedDateTime,
-                breakfast.Savory,
-                breakfast.Sweet
-            );
-            return Ok(response);
+            var breakfastResponse = _service.CreateBreakfastResponse(breakfast);
+            return Ok(breakfastResponse);
         }
 
         [HttpPut("{id:guid}")]

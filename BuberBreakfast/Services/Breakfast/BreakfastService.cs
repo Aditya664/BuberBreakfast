@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BuberBreakfast.Contracts.Breakfast;
 using BuberBreakfast.Models;
 using BuberBreakfast.Services.Breakfast;
 
@@ -27,6 +28,35 @@ namespace BuberBreakfast.Services.Breakfast
             foreach(var a in _breakfast){
                 yield return a.Value;
             }
+        }
+        public Breakfasts CreateBreakfastWithRequest(CreateBreakfastRequest request){
+             Breakfasts breakfast = new Breakfasts(
+                Guid.NewGuid(),
+                request.Name,
+                request.Description,
+                request.StartDateTime,
+                request.EndDateTime,
+                DateTime.UtcNow,
+                request.Savory,
+                request.Sweet);
+
+            return breakfast;
+        }
+
+        public BreakfastResponse CreateBreakfastResponse(Breakfasts response)
+        {
+             BreakfastResponse breakfastResponse = new BreakfastResponse(
+                response.Id,
+                response.Name,
+                response.Description,
+                response.StartDateTime,
+                response.EndDateTime,
+                response.LastModifiedDateTime,
+                response.Savory,
+                response.Sweet);
+                
+                return breakfastResponse;
+
         }
     }
 }
