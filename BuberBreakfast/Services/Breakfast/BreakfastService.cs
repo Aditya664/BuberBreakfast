@@ -9,7 +9,7 @@ namespace BuberBreakfast.Services.Breakfast
 {
     public class BreakfastService : IBreakfastService
     {
-        private readonly Dictionary<Guid,Breakfasts> _breakfast = new();
+        private static readonly Dictionary<Guid,Breakfasts> _breakfast = new();
         public void CreateBreakfast(Breakfasts breakfast)
         {
           
